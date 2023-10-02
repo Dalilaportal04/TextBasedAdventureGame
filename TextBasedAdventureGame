@@ -1,0 +1,323 @@
+def main():
+    # Vaild answers for the first question
+    with open("C:/Users/dalil/OneDrive/Documents/story/context.txt", "r") as file:
+        yes = ["Yes", "yes", "y", "Y"]
+        no = ["No", "no", "N", "n"]
+        # Introduction
+        line = file.readlines()
+        print(" ")
+        print("___________________________________________________")
+        print(line[0])
+        print(line[1]) #Calls specific lines from a separate document for it to be printed in order
+        print(line[2])
+        print("First choose a name. You can either input a name or type no and a name will be generated for you.")
+        def intro(name, last_name):    #Gives an introduction that will be used when the user's name is determined
+            return "Hello " + name + " " + last_name + " that's a really cool name \nGood Luck " + name + " may the odds be with you"
+        print("Ready? Say yes if you want to input a name and no if you want for the computer to generate a name for you.")
+        ans = input() #Makes the answer lowercase and takes away any unneccasry spaces
+        answer = ans.lower().strip()
+        if answer == "yes": #If the user says yes this will allow them to into their own name
+            name1 = input("Please input your first name here: ")
+            name2 = input("Please input your last name here: ")
+            print(intro(name1, name2))  #Calls procedure
+        elif answer != "yes" or answer != "no":
+            print("Sorry that is not a vaild response please try again")
+        while answer == "no": #If the user types no this will generate a random name until they type yes
+            import random
+            first_name = ["Atlas", "Ash", "Alex", "Blake", "Brooklyn", "Blair", "Charlie", "Casey", "Cameron", "Dakota",
+                          "Dallas", "Dagon", "Emerson", "Emery", "Eden", "Frankie", "Fenix", "Fernley", "Glenn",
+                          "Garnet", "Gavyn", "Harper", "Hayden", "Hao", "Jordan", "Jace", "Jaden", "Kai", "Kane",
+                          "Karter", "Landon", "Lyndon", "Lyric", "Max", "Mckensie", "Morgan", "Nat", "Nell", "Nour",
+                          "Oakley", "Ocean", "Oakes", "Parker", "Phoenix", "Page", "Quest", "Quin", "Quant", "Riley",
+                          "Remy", "Rory", "Sam", "Skylar", "Spencer", "Tatum", "Taylor", "Terrin", "Umber", "Urban",
+                          "Utah", "Vahn", "Valo", "Vero", "Wallace", "Waneta", "Waverly", "Xerxes", "Xia", "Xen", "Yae",
+                          "Yale", "Yarden", "Zane", "Zasha", "Zeal"]    #List of first names
+            random_first_name = random.choice(first_name) #Generates a random index
+            print("Your first name is: ", random_first_name)
+            last_name = ["Elsher", "Solace", "Levine", "Thatcher", "Raven", "Bardot", "St. James", "Hansley",
+                         "Cromwell", "Ashley", "Monroe", "West", "Langley", "Marley", "Hope", "Ellis"] #List of last names
+            random_last_name = random.choice(last_name)
+            print("Your last name is: ", random_last_name)
+            print(intro(random_first_name,random_last_name))  #Calls procedure
+            answer = input("Ready?: ") #if input is no then the loop will repeate, if it is yes then the user will exit the loop
+
+
+        print("___________________________________________________")
+        print(" ")
+        # Storyline routes
+        # Question 1
+        def main1():
+            print(" ")
+            print(line[3])
+            print(line[4])
+            # Gets the answer input from the user and takes away extra spaces they may of added
+            ans = input()
+            answer = ans.strip()
+            if answer in yes:
+                print(line[5])
+                print(line[6])
+                input()
+
+                # Question 2
+                def main2():
+                    print(line[7])
+                    print(line[8])
+                    ans = input()
+                    answer = ans.lower().strip()
+                    if answer == "trail":
+                        print(line[9])
+                        print(line[10])
+
+                        # Question 3
+                        def main3():
+                            print(line[11])
+                            ans = input()
+                            # This one also makes it so that the input is converted to all lowercase
+                            answer = ans.lower().strip()
+                            if answer == "hunting":
+                                print(line[12])
+
+                                # Question 4
+                                def main4():
+                                    print(line[13])
+                                    ans = input()
+                                    answer = ans.lower().strip()
+                                    if answer == "duck":
+                                        print("Congratulations! ",random_first_name or name1, " You were able to survive, although the top of your hair got burnt off.")
+                                        print(line[15])
+
+                                        # Question 5
+                                        def main5():
+                                            print(line[16])
+                                            ans = input()
+                                            answer = ans.lower().strip()
+                                            if answer == "live":
+                                                print(line[17])
+                                                print(line[18])
+                                                print(line[19])
+                                                print("___________________________________________________")
+                                                print("Congratulations! ",random_last_name or name2, "Not only did you survive but you also kept your consciousness clean. This concludes the end of The Knight’s Final Quest, thanks for playing!")
+                                                restart = input("Would you like to play again?")
+                                                while restart.lower() == "yes":
+                                                    main()
+                                                else:
+                                                    print(" ")
+                                                    print("Thanks for playing!")
+                                                    exit()
+                                            elif answer == "kill":
+                                                print(line[21])
+                                                print(line[22])
+                                                print("Congratulations! ",random_first_name," You survived and successfully killed the dragon. This concludes the end of The Knight’s Final Quest, thanks for playing!")
+                                                restart = input("Would you like to play again?")
+                                                while restart.lower() == "yes":
+                                                    main()
+                                                else:
+                                                    print(" ")
+                                                    print("Thanks for playing!")
+                                                    exit()
+                                            else:
+                                                print(" ")
+                                                print(
+                                                    "Sorry that is not a vaild response, please refer back to the instructions and try playing again. Say yes if you do otherwise the game will end.")
+                                                restart = input("Will you like to start again from this point?")
+                                                # This will restart the program from that question on
+                                                while restart.lower() == "yes":
+                                                    main5()
+                                                else:
+                                                    print(" ")
+                                                    print("Thanks for playing!")
+                                                    exit()
+
+                                        main5()
+                                    elif answer == "shield":
+                                        print(line[24])
+                                        print("Game over. Thank you for playing!")
+                                        restart = input("Would you like to play again?")
+                                        while restart.lower() == "yes":
+                                            main()
+                                        else:
+                                            print(" ")
+                                            print("Thanks for playing!")
+                                            exit()
+                                    else:
+                                        print(" ")
+                                        print(
+                                            "Sorry that is not a vaild response, please refer back to the instructions and try playing again. Say yes if you do otherwise the game will end.")
+                                        restart = input("Will you like to start again from this point?")
+                                        while restart.lower() == "yes":
+                                            main4()
+                                        else:
+                                            print(" ")
+                                            print("Thanks for playing!")
+                                            exit()
+
+                                main4()
+                            elif answer == "basket":
+                                print(line[25])
+                                print("Game Over. Thank you for playing!")
+                                restart = input("Would you like to play again?")
+                                while restart.lower() == "yes":
+                                    main()
+                                else:
+                                    print(" ")
+                                    print("Thanks for playing!")
+                                    exit()
+                            else:
+                                print(" ")
+                                print(
+                                    "Sorry that is not a vaild response, please refer back to the instructions and try playing again. Say yes if you do otherwise the game will end.")
+                                restart = input("Will you like to start again from this point?")
+                                while restart.lower() == "yes":
+                                    main3()
+                                else:
+                                    print(" ")
+                                    print("Thanks for playing!")
+                                    exit()
+
+                        main3()
+                    elif answer == "tunnel":
+                        # Question 6
+                        def main6():
+                            print(line[26])
+                            ans = input()
+                            answer = ans.lower().strip()
+                            if answer == "hide":
+                                print(line[27])
+                                print(line[28])
+
+                                # Question 7
+                                def main7():
+                                    print(line[29])
+                                    ans = input()
+                                    answer = ans.lower().strip()
+                                    if answer == "duck":
+                                        print("Congratulations! ",random_first_name, " You were able to survive, although the top of your hair got burnt off.")
+                                        print(line[31])
+
+                                        # Question 8
+                                        def main8():
+                                            print(line[32])
+                                            ans = input()
+                                            answer = ans.lower().strip()
+                                            if answer == "live":
+                                                print(line[33])
+                                                print(line[34])
+                                                print(line[35])
+                                                print("___________________________________________________")
+                                                print("Congratulations! ",random_first_name, " Not only did you survive but you also kept your consciousness clean. This concludes the end of The Knight’s Final Quest, thanks for playing!")
+                                                restart = input("Would you like to play again?")
+                                                while restart.lower() == "yes":
+                                                    main()
+                                                else:
+                                                    print(" ")
+                                                    print("Thanks for playing!")
+                                                    exit()
+                                            elif answer == "kill":
+                                                print(line[37])
+                                                print(line[38])
+                                                print("Congratulations! ",random_first_name, " You survived and successfully killed the dragon. This concludes the end of The Knight’s Final Quest, thanks for playing!")
+                                                restart = input("Would you like to play again?")
+                                                while restart.lower() == "yes":
+                                                    main()
+                                                else:
+                                                    print(" ")
+                                                    print("Thanks for playing!")
+                                                    exit()
+                                            else:
+                                                print(" ")
+                                                print(
+                                                    "Sorry that is not a vaild response, please refer back to the instructions and try playing again. Say yes if you do otherwise the game will end.")
+                                                restart = input("Will you like to start again from this point?")
+                                                while restart.lower() == "yes":
+                                                    main8()
+                                                else:
+                                                    print(" ")
+                                                    print("Thanks for playing!")
+                                                    exit()
+
+                                        main8()
+                                    elif answer == "shield":
+                                        print(line[40])
+                                        print("Game over. Thank you for playing!")
+                                        restart = input("Would you like to play again?")
+                                        while restart.lower() == "yes":
+                                            main()
+                                        else:
+                                            print(" ")
+                                            print("Thanks for playing!")
+                                            exit()
+                                    else:
+                                        print(" ")
+                                        print(
+                                            "Sorry that is not a vaild response, please refer back to the instructions and try playing again. Say yes if you do otherwise the game will end.")
+                                        restart = input("Will you like to start again from this point?")
+                                        while restart.lower() == "yes":
+                                            main7()
+                                        else:
+                                            print(" ")
+                                            print("Thanks for playing!")
+                                            exit()
+
+                                main7()
+                            elif answer == "fight":
+                                print(line[41])
+                                print("Game over. Thank you for playing!")
+                                restart = input("Would you like to play again?")
+                                while restart.lower() == "yes":
+                                    main()
+                                else:
+                                    print(" ")
+                                    print("Thanks for playing!")
+                                    exit()
+                            else:
+                                print(" ")
+                                print(
+                                    "Sorry that is not a vaild response, please refer back to the instructions and try playing again. Say yes if you do otherwise the game will end.")
+                                restart = input("Will you like to start again from this point?")
+                                while restart.lower() == "yes":
+                                    main6()
+                                else:
+                                    print(" ")
+                                    print("Thanks for playing!")
+                                    exit()
+
+                        main6()
+                    else:
+                        print(" ")
+                        print(
+                            "Sorry that is not a vaild response, please refer back to the instructions and try playing again. Say yes if you do otherwise the game will end.")
+                        restart = input("Will you like to start again from this point?")
+                        while restart.lower() == "yes":
+                            main2()
+                        else:
+                            print(" ")
+                            print("Thanks for playing!")
+                            exit()
+
+                main2()
+            if answer in no:
+                print(line[42])
+                print("Game over. Thank you for playing!")
+                restart = input("Would you like to play again?")
+                while restart.lower() == "yes":
+                    main()
+                else:
+                    print(" ")
+                    print("Thanks for playing!")
+                    exit()
+            else:
+                print(" ")
+                print(
+                    "Sorry that is not a vaild response, please refer back to the instructions and try playing again. Say yes if you do otherwise the game will end.")
+                restart = input("Will you like to start again from this point?")
+                while restart.lower() == "yes":
+                    main1()
+                else:
+                    print(" ")
+                    print("Thanks for playing!")
+                    exit()
+
+        main1()
+
+
+main()
